@@ -1,5 +1,5 @@
 # FeedKU
-FeedKU is Freesource Software For Making Your Formulation Livestock
+FeedKU is Freesource Software For Making Your Formulation Livestock Using Javascript and Sqlite3
 
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg) [![JSDelivr CDN](https://data.jsdelivr.com/v1/package/gh/<zxmodren>/<FeedKU>/badge?style=rounded)](https://www.jsdelivr.com/package/gh/<zxmodren>/<FeedKU>) [![Visual Studio](https://img.shields.io/badge/--6C33AF?logo=visual%20studio)](https://visualstudio.microsoft.com/)
 
@@ -37,7 +37,11 @@ FeedKU is Freesource Software For Making Your Formulation Livestock
 + Copy extracted database file to db folder
 + FINISH
 
-## Donate
+## Important
+### DONT USE COMA (,) CHANGE WITH DOT (.)
+
+
+## Support Us
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/aryaferdya9)
 
 
