@@ -1,0 +1,139 @@
+.btn-light-bordered {
+    border: 1px solid black;
+}
+
+.btn-light-bordered:hover {
+    border: 1px solid white;
+    background-color: #AFE1AF;
+}
+
+.small-gutters {
+    margin-right: 10px;
+    margin-right: 10px;
+}
+
+.small-gutters>.col,
+.small-gutters>[class*='col-'] {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.box,
+.box-common {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    z-index: 996;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 17px;
+    border: 1px solid white;
+}
+
+.box.no-border {
+    border: 0px;
+}
+
+.box-header::before,
+.box-body::before,
+.box-footer::before,
+.box-header::after,
+.box-body::after,
+.box-footer::after {
+    content: " ";
+    display: table;
+}
+
+.box-header::after,
+.box-body::after,
+.box-footer::after {
+    clear: both;
+}
+
+.box-header {
+    font-size: 24px;
+    color: darkgrey;
+    padding: 15px 15px 15px 15px;
+}
+
+.box-header.no-padding {
+    padding: 0px 0px 0px;
+}
+
+.box-header>h2 {
+    font-size: 20px;
+}
+
+.box-header.with-border {
+    border-bottom: 5px solid white;
+}
+
+.box-body {
+    color: gray;
+    margin: 15px 15px 15px 15px;
+    font-size: 14px;
+}
+
+.box-body-no-margin {
+    margin: 15px 0px 0px 0px;
+}
+
+.box-footer {
+    border-top: 5px solid gray;
+    color: white;
+    padding: 15px 15px 15px;
+}
+
+.box-common {
+    padding: 15px 15px;
+}
+
+.box-info {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.box-info-body {
+    padding: 15px 15px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-top: 1px solid gray;
+    border-top-right-radius: 5px;
+}
+
+.box-info-right {
+    display: inline;
+}
+
+.box-info-right.h3 {
+    font-weight: bold;
+}
+
+.box-info-left {
+    display: inline;
+    font-size: 30px;
+}
+
+.box-info-title {
+    background-color: pink;
+    color: azure;
+    padding: 2px 2px 4px 15px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 14px;
+}
+
+.box-info-title.no-bg-color {
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+
+}

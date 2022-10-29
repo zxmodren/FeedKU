@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+
+<body style="background-color:#00695C;">
+    <nav class="navbar navbar-dark" style="background-color:  #004D40;">
+        <div style="display: inline-block; color:aliceblue">
+            <span id="app-name" class="ms-2" style="font-size: 14.5px;">FeedKU</span>
+        </div>
+        <div style="display: inline-block;">
+            <button class="btn btn-sm btn-secondary" onclick="minHelp()"><i class="fa fa-window-minimize"></i></button>
+            <!-- exit btn -->
+            <button class="btn btn-sm btn-danger me-2" id="btn-close-db" onclick="closeHelp()"><i
+                    class="fa fa-times"></i></button>
+        </div>
+    </nav>
+    <div style="padding: 50px 20px 20px 20px;">
+        <div class="d-flex justify-content-between">
+            <h1 style="color: white; font-size: 20px;">1.Formulation</h1>
+        </div>
+        <p style="color: white;">Before start making a formulation you must be know basic of formulation for livestock
+        </p>
+        <h3 style="color: white;">First, Click a Start</h3>
+        <div style="padding: 10px 20px 20px 20px;">
+            <div class="d-flex justify-content-between">
+                <div class="col-md-3 me-2 ">
+                    <div class="box-menu" aria-readonly="true">
+                        <a href="" class="menu-link">
+                            <img src="../assets/images/icons/calculator.png" alt="">
+                        </a>
+                        <div class="box-menu-title">Start</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3 style="color: white;">Second, Chose method do you want to use</h3>
+        <p style="color: white; font-size: 20px;">(Pearson Square and Al-Jabar is Under developed)</p>
+        <div style="padding: 10px 20px 20px 20px;">
+            <div class="d-flex justify-content-between">
+                <div class="col-md-3 me-2 ">
+                    <div class="box-menu">
+                        <a href="" class="menu-link">
+                            <img src="../assets/images/icons/numbers.png" alt="">
+                        </a>
+                        <div class="box-menu-title">Trial And Error</div>
+                    </div>
+                </div>
+                <div class="col-md-3 me-2">
+                    <div class="box-menu">
+                        <a href="" class="menu-link">
+                            <img src="../assets/images/icons/lock.png" alt="">
+                        </a>
+                        <div class="box-menu-title">Pearson Square</div>
+                    </div>
+                </div>
+                <div class="col-md-3 me-2">
+                    <div class="box-menu">
+                        <a href="" class="menu-link">
+                            <img src="../assets/images/icons/lock.png" alt="">
+                        </a>
+                        <div class="box-menu-title">Al-Jabar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3 style="color: white;">Third, Click Add Formulation Button and Input Type Of Livestock</h3>
+        <h3 style="color: white; padding-top: 20px;">Fourth, Click Create Formulation</h3>
+        <h3 style="color: white; padding-top: 20px;">Fifth, Search Feed Using International Number</h3>
+        <h3 style="color: white; padding-top: 20px;">Sixth, Add Proportion</h3>
+        <h3 style="color: white; padding-top: 20px;">Seventh, Click Add Feed</h3>
+        <h3 style="color: white; padding-top: 20px;">Eighth, If your Want To Edit A Proportion</h3>
+        <p style="color: white; font-size: 20px;">Search international number and input the proportion, that automatic
+            updates a formulation</p>
+
+    </div>
+
+
+    <script src="../assets/jquery/jquery1.9.0.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        const electron = require('electron')
+        const { ipcRenderer } = electron
+
+        closeHelp = () => {
+            ipcRenderer.send('close:help')
+        }
+        minHelp = () => {
+            ipcRenderer.send('min:help')
+        }
+    </script>
+</body>
+
+</html>

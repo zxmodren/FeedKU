@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/trial.css">
+    <link rel="stylesheet"
+        href="../assets/jquery/jquery-ui-1.9.2.custom/jquery-ui-1.9.2.custom/css/base/jquery-ui-1.9.2.custom.min.css">
+</head>
+
+<body style="background-color:#00695C;">
+    <nav class="navbar navbar-dark fixed-top" style="background-color:  #004D40;">
+        <div style="display: inline-block; color:aliceblue"><span id="app-name" class="ms-2"
+                style="font-size: 14.5px;">FeedKU</span></div>
+        <div style="display: inline-block;">
+            <!-- sign out btn
+            <button class="btn btn-sm btn-secondary"><i class="fa fa-sign-out-alt"></i></button> -->
+            <!-- minimize btn -->
+            <button class="btn btn-sm btn-secondary" onclick="minTrial()"><i class="fa fa-window-minimize"></i></button>
+            <!-- exit btn -->
+            <button class="btn btn-sm btn-danger me-2" id="btn-close-trial" onclick="closeTrial()"><i
+                    class="fa fa-times"></i></button>
+        </div>
+    </nav>
+    <div style="padding: 70px 10px 10px 10px;">
+        <div class="row small-gutters">
+            <div class="col-md-8">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h6>
+                            <img src="" class="mr-sm-1" alt="">
+                            <!-- <button onclick="editFeedModal('proportion')"
+                                class="btn btn-sm btn-light btn-light-bordered mb-2 me-sm-1 float-end"
+                                title="Edit Proportion" id="edit-proportion"><i class="fa-solid fa-pencil"></i></button> -->
+                            <button class="btn btn-sm btn-light btn-light-bordered mb-2 me-sm-1 float-end"
+                                title="Add Formulation" id="btn-new-formulation" data-bs-toggle="modal"
+                                data-bs-backdrop="false" data-bs-target="#modal-new-formulation" autofocus
+                                onclick="formulationNumber()" id=""><i class="fa-solid fa-plus"></i></button>
+                        </h6>
+                    </div>
+                    <div class="box-body">
+                        <div class="row-g-3">
+                            <div class="col-auto">
+                                <input type="text" class="form-control-sm formulation-input" id="internationalnumber"
+                                    placeholder="International Number" disabled>
+                                <div class="btn-group mb-1">
+                                    <input type="text" class="form-control-sm formulation-input" id="prop"
+                                        placeholder="Proportion" disabled>
+                                    <button id="btn_add_feed" class="btn btn-sm btn-primary sales-input"><i
+                                            class="fa-solid fa-plus" onclick="insertFormulation()"></i></button>
+                                </div>
+                                <!-- <div class="col-auto">
+                                    <select name="" id="feed_name"
+                                        class="form-select form-select-sm mb-2 sales-input"></select>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="sales-record">
+                            <div class="table-responsive" style="height: 400px;">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>Feed Name</th>
+                                            <th>Description</th>
+                                            <th>International Number</th>
+                                            <th style="text-align: center;">Proportion</th>
+                                            <th>Dry Mater</th>
+                                            <th>ME</th>
+                                            <th>TME</th>
+                                            <th>Protein</th>
+                                            <th>Ether Extract</th>
+                                            <th>Linoleic Acid</th>
+                                            <th>Crude Fiber</th>
+                                            <th>Calcium</th>
+                                            <th>Total Phosphorus</th>
+                                            <th>Nonphytate Phosphorus</th>
+                                            <th>Potasium</th>
+                                            <th>Chlorine</th>
+                                            <th>Iron</th>
+                                            <th>Magnesium</th>
+                                            <th>Manganese</th>
+                                            <th>Sodium</th>
+                                            <th>Sulfur</th>
+                                            <th>Copper</th>
+                                            <th>Selenium</th>
+                                            <th>Zinc</th>
+                                            <th>Biotin</th>
+                                            <th>Choline</th>
+                                            <th>Folacin</th>
+                                            <th>Niacin</th>
+                                            <th>Pantothenic Acid</th>
+                                            <th>Pyridoxine</th>
+                                            <th>Riboflamin</th>
+                                            <th>Thiamin</th>
+                                            <th>Vitamin B12</th>
+                                            <th>Vitamin E</th>
+                                            <th>Arginine</th>
+                                            <th>Glycine</th>
+                                            <th>Serine</th>
+                                            <th>Histidine</th>
+                                            <th>Isoleucine</th>
+                                            <th>Leucine</th>
+                                            <th>Lysine</th>
+                                            <th>Methionine</th>
+                                            <th>Cystine</th>
+                                            <th>Phenylalanine</th>
+                                            <th>Tyrosine</th>
+                                            <th>Threonine</th>
+                                            <th>Tryptophan</th>
+                                            <th>Valine</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="formulation-data"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- <div class="table-responsive">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><span class="float-right">ME</span></td>
+                                        <td><span class="float-right" id="total_me" style="font-weight: bold;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="float-right">TME</span></td>
+                                        <td><span class="float-right" id="total_tme" style="font-weight: bold;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="float-right">Protein</span></td>
+                                        <td><span class="float-right" id="total_protein"
+                                                style="font-weight: bold;"></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><span class="float-left" style="font-weight: bold;"><b>Total</b></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> -->
+                    </div>
+                    <!-- <div class="box-footer" style="margin-left: 0px; margin-right:0px;">
+                        <button class="btn btn-sm btn-primary float-right mr-sm-2 mb-2" id="btn-result">Result</button>
+
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box-common">
+                    <table class="table table-bordered" style="font-size:14px; border: 1px solid#838687">
+                        <tbody>
+                            <tr>
+                                <td><span class="badge badge-warning">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>No</td>
+                                <td>: <span id="info-formulation-number"></span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-warning">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>Date</td>
+                                <td>: <span id="info-formulation-date"></span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-warning">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>Livestock</td>
+                                <td>: <span id="info-livestock"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="divider" style="margin-top: 0px;"></div>
+                    <div class="box-info">
+                        <div class="box-info-body" style="background-color: white;">
+                            <div class="box-info-left"><i class="fa-solid fa-percent"></i></div>
+                            <div class="box-info-right float-end">
+                                <h3 id="info-total-ratio"></h3>
+                            </div>
+                        </div>
+                        <div class="box-info-title">Percentage Ratio</div>
+                    </div>
+                    <table class="table table-bordered" style="font-size:14px; border: 1px solid#838687">
+                        <tbody>
+                            <tr>
+                                <td><span class="badge badge-success">
+                                    </span>Dry Mater</td>
+                                <td>: <span id="total_dm"></span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-success">
+                                    </span>ME</td>
+                                <td>: <span id="total_me"></span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-success">
+                                    </span>TME</td>
+                                <td>: <span id="total_tme"></span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-success">
+                                    </span>Protein</td>
+                                <td>: <span id="total_protein"></span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-success">
+                                    </span>Ether Extract</td>
+                                <td>: <span id="total_ee"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade sales-modal" id="modal-new-formulation" role="dialog" aria-labelledby="modal-new-formulation"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content with-shadow">
+                <div class="modal-header bg-custom-dark">
+                    New Formulation
+                    <a href="#" type="button" class="close" style="color: white" data-dismiss="modal">
+                        <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                    </a>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-2">
+                        <input type="text" class="form-control form-control-sm" placeholder="Formulation Number"
+                            id="formulation-number" readonly>
+                    </div>
+                    <div class="mb-2">
+                        <input type="text" placeholder="Type of Livestock" id="type-livestock"
+                            class="form-control form-control-sm">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-primary" id="btn-create-new-formulation"
+                        onclick="openFormulation()"><i class="fa fa-check">
+                            Create
+                            Formulation</i></button>
+                    <button data-bs-dismiss="modal" class="btn btn-sm btn-secondary" id="btn-create-new-formulation"><i
+                            class="fa fa-times-circle"> Close</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../assets/jquery/jquery1.9.0.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script
+        src="../assets/jquery/jquery-ui-1.9.2.custom/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="../assets/js/require.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/trial.js"></script>
+    <!-- <script>
+        const electron = require('electron')
+        const { ipcRenderer } = electron
+        feed = () => {
+            ipcRenderer.send('load:feed-win')
+        }
+    </script> -->
+</body>
+
+</html>

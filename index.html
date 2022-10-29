@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body style="background-color:#00695C;">
+    <nav class="navbar navbar-dark fixed-top" style="background-color:  #004D40;">
+        <div style="display: inline-block; color:aliceblue"><span id="app-name" class="ms-2"
+                style="font-size: 14.5px;">FeedKU</span></div>
+        <div style="display: inline-block;">
+            <!-- navbar Dropdown user
+            <div class="dropdown" style="display: inline;">
+                <a href="#" class="btn btn-sm btn-primary" id="userInfoDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span id="userUsername">User</span>
+                    <i class="fa fa-user"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-light" style="width: 350px;"
+                    aria-labelledby="userInfoDropdown">
+                    <div class="dropdown-body">
+                        <table class="table table-sm table-bordered"
+                            style="font-size: 13px; border: radius 100%; text-align:center;">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Access Level</th>
+                                    <th>Position</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="userAccessLevel"></td>
+                                    <td id="userPosition"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> -->
+            <!-- Navbar Dropdown Setting -->
+            <!-- <div class="dropdown" style="display: inline;">
+                <a href="#" class="btn btn-sm btn-secondary" id="settingDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-cog"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-light" style="font-size: 14px;"
+                    aria-labelledby="settingDropdown">
+                    <a class="dropdown-item" id="general-setting" href="#"><i class="fa fa-cogs"></i>General
+                        Setting</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" id="user-setting" href="#"><i class="fa fa-users"></i>User Setting</a>
+                </div>
+            </div> -->
+            <!-- sign out btn
+            <button class="btn btn-sm btn-secondary"><i class="fa fa-sign-out-alt"></i></button> -->
+            <!-- minimize btn -->
+            <button class="btn btn-sm btn-secondary" onclick="minimizeFeedku()"><i
+                    class="fa fa-window-minimize"></i></button>
+            <!-- exit btn -->
+            <button class="btn btn-sm btn-danger me-2" onclick="closeFeedku()"><i class="fa fa-times"></i></button>
+        </div>
+    </nav>
+    <div style="padding: 150px 20px 20px 20px;">
+        <div class="d-flex justify-content-between">
+            <div class="col-md-3 me-2 ">
+                <div class="box-menu">
+                    <a href="" class="menu-link" onclick="fr()">
+                        <img src="./assets/images/icons/calculator.png" alt="">
+                    </a>
+                    <div class="box-menu-title">Start</div>
+                </div>
+            </div>
+            <div class="col-md-3 me-2">
+                <div class="box-menu">
+                    <a href="" class="menu-link" onclick="help()">
+                        <img src="./assets/images/icons/help.png" alt="">
+                    </a>
+                    <div class="box-menu-title">Help</div>
+                </div>
+            </div>
+            <div class="col-md-3 me-2">
+                <div class="box-menu">
+                    <a href="" class="menu-link" onclick="feed()">
+                        <img src="./assets/images/icons/database.png" alt="">
+                    </a>
+                    <div class="box-menu-title">Database</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/jquery/jquery1.9.0.min.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+        const electron = require('electron')
+        const { ipcRenderer } = electron
+        feed = () => {
+            ipcRenderer.send('load:feed-win')
+        }
+        fr = () => {
+            ipcRenderer.send('load:fr-win')
+        }
+        help = () => {
+            ipcRenderer.send('load:help-win')
+        }
+        closeFeedku = () => {
+            ipcRenderer.send('close:feedku-win')
+        }
+        minimizeFeedku = () => {
+            ipcRenderer.send('min:feedku-win')
+        }
+    </script>
+</body>
+
+</html>

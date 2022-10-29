@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+
+<body style="background-color:#00695C;" id="feed-database">
+    <nav class="navbar navbar-dark" style="background-color:  #004D40;">
+        <div style="display: inline-block; color:aliceblue">
+            <span id="app-name" class="ms-2" style="font-size: 14.5px;">FeedKU</span>
+        </div>
+        <div style="display: inline-block;">
+            <!-- navbar Dropdown user
+            <div class="dropdown" style="display: inline;">
+                <a href="#" class="btn btn-sm btn-primary me-2" id="userInfoDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span id="userUsername">User</span>
+                    <i class="fa fa-user"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-light" style="width: 350px;"
+                    aria-labelledby="userInfoDropdown">
+                    <div class="dropdown-body">
+                        <table class="table table-sm table-bordered"
+                            style="font-size: 13px; border: radius 100%; text-align:center;">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Access Level</th>
+                                    <th>Position</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="userAccessLevel"></td>
+                                    <td id="userPosition"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> -->
+            <!-- minimize btn -->
+            <button class="btn btn-sm btn-secondary" onclick="minDb()"><i class="fa fa-window-minimize"></i></button>
+            <!-- exit btn -->
+            <button class="btn btn-sm btn-danger me-2" id="btn-close-db" onclick="closeDb()"><i
+                    class="fa fa-times"></i></button>
+        </div>
+    </nav>
+    <div class="toolbar">
+        <div class="toolbar-menu">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="main-toolbar">
+                        <div class="row g-3">
+                            <div class="col-auto">
+                                <button class="btn btn-sm btn-light btn-light-bordered" id="add-data" title="Add Feed"
+                                    onclick="openFormadddata()"><i class="fa fa-plus"></i></button>
+                                <button class="btn btn-sm btn-light btn-light-bordered" onclick="deletedata()"
+                                    id="delete-multiple-data" data-bs-toggle="tooltip" title="Delete"><i
+                                        class="fa fa-trash"></i></button>
+                                <!-- <button class="btn btn-sm btn-light btn-light-bordered"><i
+                                        class="fa fa-file-excel"></i></button>
+                                <button class="btn btn-sm btn-light btn-light-bordered"><i
+                                        class="fa fa-file-pdf"></i></button>
+                                <button class="btn btn-sm btn-light btn-light-bordered"><i
+                                        class="fa fa-print"></i></button> -->
+                                <button class="btn btn-sm btn-light btn-light-bordered" onclick="selectall()"
+                                    id="select-all" title="Select All"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-sm btn-light btn-light-bordered" onclick="unselectall()"
+                                    id="unselect-all" title="Unselect All"><i class="fa fa-times"></i></button>
+                            </div>
+                            <!-- <div class="col-auto">
+                                <select name="" id="row_per_page" class="form-select form-select-sm">
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                </select>
+                            </div> -->
+                            <!-- <div class="col-auto">
+                                <div class="input-group" id="search-input-group"><input type="text"
+                                        class="form-control form-control-sm" id="btn-search-data" name="search-data"
+                                        placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-sm btn-light btn-light-bordered" id="btn-search-data"><i
+                                                class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- <div id="pagination" class="col-auto">
+                                <div class="btn-group btn-group-sm">
+                                    <div class="btn-group btn-group-sm me-1">
+                                        <a href="#" class="btn btn-sm btn-light btn-light-bordered" id="fist-page"><i
+                                                class="fa fa-step-backward"></i></a>
+                                        <a href="#" class="btn btn-sm btn-light btn-light-bordered" id="prev-page"><i
+                                                class="fa fa-backward"></i></a>
+                                    </div>
+                                    <div class="input-group input-group-sm me-1">
+                                        <input type="text" class="form-control form-control-sm" id="page-number"
+                                            value="1">
+                                        <input type="text" class="form-control form-control-sm" id="total-pages"
+                                            readonly>
+                                    </div>
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="#" class="btn btn-sm btn-light btn-light-bordered" id="next-page"><i
+                                                class="fa fa-forward"></i></a>
+                                        <a href="#" class="btn btn-sm btn-light btn-light-bordered" id="last-page"><i
+                                                class="fa fa-step-forward"></i></a>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-table">
+        <div id="form-add-data">
+            <div style="padding: 20px 20px 20px 20px;">
+                <h6>Add Feed</h6>
+                <div style="color: black;" class="row">
+                    <div class="col-auto">
+                        <input type="text" class="form-control form-control-sm" placeholder="Feed Name" id="feed_name"
+                            required>
+                    </div>
+                    <div class="col-auto">
+                        <select name="" id="category" class="form-select form-select-sm">
+                            <option value="">Category</option>
+                            <option value="dry forages and roughages">dry forages and roughages</option>
+                            <option value="energy feeds">energy feed</option>
+                            <option value="protein supplements">protein supplements</option>
+                            <option value="vitamins">vitamins</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" class="form-control form-control-sm" placeholder="Description"
+                            id="description" required>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" class="form-control form-control-sm" placeholder="International Number"
+                            id="international_number" required>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-sm btn-primary" onclick="insertFeed()">ADD</button>
+                        <button class="btn btn-sm btn-secondary" id="close-form-add-data"
+                            onclick="closeFormadddata()">Close</button>
+                    </div>
+                </div>
+                <div style="padding: 20px 20px 20px 20px;">
+                    <div style="color: black;" class="row">
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Dry Mater" id="dm"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="ME" id="me" required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="TME" id="tme" required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Protein" id="pro"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Ether Extract" id="ee"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Linoleic Acid" id="la"
+                                required>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 20px 20px 20px 20px;">
+                    <div style="color: black;" class="row">
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Crude Fiber" id="cf"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Calcium" id="cal"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Total Phosphorus"
+                                id="tp" required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Nonphytate Phosphorus"
+                                id="np" required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Potasium" id="pot"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Chlorine" id="chol"
+                                required>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 20px 20px 20px 20px;">
+                    <div style="color: black;" class="row">
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Iron" id="ir" required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Magnesium" id="mag"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Manganese" id="mang"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Sodium" id="sod"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Sulfur" id="sul"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Copper" id="cop"
+                                required>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="padding: 20px 20px 20px 20px;">
+                    <div style="color: black;" class="row">
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Selenium" id="sel"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Zinc" id="zin"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Biotin" id="bio"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Choline" id="cho"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Folacin" id="fol"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Niacin" id="nia"
+                                required>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="padding: 20px 20px 20px 20px;">
+                    <div style="color: black;" class="row">
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Pantothenic Acid"
+                                id="pa" required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Pyridoxine" id="pyri"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Riboflamin" id="rib"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Thiamin" id="thi"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Vitamin B12"
+                                id="vit_b12" required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Vitamin E" id="vit_e"
+                                required>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="padding: 20px 20px 20px 20px;">
+                    <div style="color: black;" class="row">
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Arginine" id="arg"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Glycine" id="gly"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Serine" id="ser"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Histidine" id="his"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Isoleucine" id="iso"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Leucine" id="leu"
+                                required>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="padding: 20px 20px 20px 20px;">
+                    <div style="color: black;" class="row">
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Lysine" id="lys"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Methionine" id="meth"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Cystine" id="cys"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Phenylalanine"
+                                id="pheny" required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Tyrosine" id="tyro"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Threonine" id="thre"
+                                required>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="padding: 20px 20px 20px 20px;">
+                    <div style="color: black;" class="row">
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Tryptophan" id="tryp"
+                                required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" placeholder="Valine" id="vali"
+                                required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 20px 20px 20px 20px;" id="feedtable">
+            <div class="row tbl-fixed">
+                <div class="col-xl-12">
+                    <div id="alert"></div>
+                    <div class="table-responsive mt-2" style="background-color: white;">
+                        <table class="table" style="font-size: 13px;">
+                            <thead class="table-light" id="col-head">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Feed Name</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>International Number</th>
+                                    <th>Dry Mater</th>
+                                    <th>ME</th>
+                                    <th>TME</th>
+                                    <th>Protein</th>
+                                    <th>Ether Extract</th>
+                                    <th>Linoleic Acid</th>
+                                    <th>Crude Fiber</th>
+                                    <th>Calcium</th>
+                                    <th>Total Phosphorus</th>
+                                    <th>Nonphytate Phosphorus</th>
+                                    <th>Potasium</th>
+                                    <th>Chlorine</th>
+                                    <th>Iron</th>
+                                    <th>Magnesium</th>
+                                    <th>Manganese</th>
+                                    <th>Sodium</th>
+                                    <th>Sulfur</th>
+                                    <th>Copper</th>
+                                    <th>Selenium</th>
+                                    <th>Zinc</th>
+                                    <th>Biotin</th>
+                                    <th>Choline</th>
+                                    <th>Folacin</th>
+                                    <th>Niacin</th>
+                                    <th>Pantothenic Acid</th>
+                                    <th>Pyridoxine</th>
+                                    <th>Riboflamin</th>
+                                    <th>Thiamin</th>
+                                    <th>Vitamin B12</th>
+                                    <th>Vitamin E</th>
+                                    <th>Arginine</th>
+                                    <th>Glycine</th>
+                                    <th>Serine</th>
+                                    <th>Histidine</th>
+                                    <th>Isoleucine</th>
+                                    <th>Leucine</th>
+                                    <th>Lysine</th>
+                                    <th>Methionine</th>
+                                    <th>Cystine</th>
+                                    <th>Phenylalanine</th>
+                                    <th>Tyrosine</th>
+                                    <th>Threonine</th>
+                                    <th>Tryptophan</th>
+                                    <th>Valine</th>
+                                </tr>
+                            </thead>
+                            <tbody id="data">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="../assets/jquery/jquery1.9.0.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/require.js"></script>
+    <script src="../assets/js/toolbar.js"></script>
+    <script src="../assets/js/feeddata.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
