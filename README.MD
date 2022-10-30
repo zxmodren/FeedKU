@@ -43,7 +43,7 @@ FeedKU is Freesource Software For Making Your Formulation Livestock Using Javasc
 
 ## Support Us
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/aryaferdya9)
-+ Metamask : 0x00566A73aD2C066580548aAbCff172e7c9e27580
++ Metamask Etherium: 0x00566A73aD2C066580548aAbCff172e7c9e27580
 
 
 ## Conntact
