@@ -25,8 +25,8 @@ FeedKU is Freesource Software For Making Your Formulation Livestock Using Javasc
 
 ## Installation
 + Download [FeedKU](https://github.com/zxmodren/FeedKU/releases/download/v1.0.0/feedku-Setup-1.0.0.exe)
-+ In some device FeedKU detecting for malware (if you trust me download it)
-+ Open installation file
+## *In some device FeedKU detecting for malware (Because i don't have money to buy signing certificate, If you trust me download it)
++ Open installation file 
 + After installation the apps automatic open and you Have Error Massage => SQLITE_CANTOPEN: unable to open database
 + You need to download [Database](https://github.com/zxmodren/FeedKU/releases/download/v1.0.0/system.rar)
 + Extract database (if you trust me)
