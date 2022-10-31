@@ -47,4 +47,4 @@ FeedKU is Freesource Software For Making Your Formulation Livestock Using Javasc
 
 
 ## Conntact
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)] cloudextreme13@gmail.com
+![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white) cloudextreme13@gmail.com
